@@ -1,0 +1,25 @@
+.form {
+  margin-bottom: 2rem;
+  padding-right: 10px;
+
+  .form-group {
+    width: 320px;
+    margin: 0 auto;
+
+    .form-label {
+      font-size: 1.6rem;
+    }
+
+    .form-control {
+      display: block;
+      padding: 0px;
+      border: 1px solid;
+      border-radius: 8px;
+      margin: 1rem 0;
+      width: 100%;
+      padding-left: 10px;
+      font-size: 0.9rem;
+      height: 46px;
+    }
+  }
+}
