@@ -11,7 +11,7 @@ const ColorList = () => {
   return (
     <div className="row">
       {colors.map((color, index) => (
-        <ColorCard color={color} key={index} />
+        <ColorCard color={color} key={index + 1} />
       ))}
     </div>
   );
