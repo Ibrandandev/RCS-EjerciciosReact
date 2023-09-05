@@ -1,11 +1,24 @@
 import "../css/taskform.css";
 
+class Task {
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
+  }
+}
+
 const TaskForm = ({ tasks, setTasks }) => {
+  const tasksAux = [...tasks];
+
   const handlerSubmit = (e) => {
     e.preventDefault();
     const newTask = document.querySelector("#new-task").value;
+    const id = tasksAux.length > 0 ? tasksAux.at(-1).id + 1 : 1;
     if (newTask) {
-      setTasks([...tasks, newTask]);
+      tasksAux.push(new Task(id, newTask));
+      setTasks(tasksAux);
+      localStorage.setItem("tasks", JSON.stringify(tasksAux));
+      document.querySelector("#new-task").value = "";
     }
   };
 
@@ -17,6 +30,7 @@ const TaskForm = ({ tasks, setTasks }) => {
             Ingresa tu Tarea
           </label>
           <input type="text" id="new-task" className="form-control" />
+          <button type="submit">Save</button>
         </div>
       </form>
     </>

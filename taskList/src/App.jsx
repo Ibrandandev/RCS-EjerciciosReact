@@ -4,7 +4,9 @@ import TaskList from "./components/TaskList";
 import "./App.css";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const tasksFromStorage = JSON.parse(localStorage.getItem("tasks")) || [];
+
+  const [tasks, setTasks] = useState(tasksFromStorage);
 
   return (
     <>
