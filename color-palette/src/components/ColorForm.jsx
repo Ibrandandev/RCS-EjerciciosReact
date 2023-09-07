@@ -8,7 +8,7 @@ class Color {
   }
 }
 
-const ColorForm = () => {
+const ColorForm = ({ colorPalette, setColorPalette }) => {
   const [formValues, setFormValues] = useState({
     nombre: "",
     valor: "",
@@ -17,8 +17,13 @@ const ColorForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formValues.nombre) {
-      alert("Debe ingresar el nombre");
+    if (formValues.nombre && formValues.valor) {
+      const newColorPalette = [...colorPalette];
+      newColorPalette.push(new Color(formValues.nombre, formValues.valor));
+      setColorPalette(newColorPalette);
+      localStorage.setItem("colorPalette", JSON.stringify(newColorPalette));
+    } else {
+      alert("Debe rellenar los campos");
     }
   };
 
